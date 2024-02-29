@@ -4,7 +4,7 @@ class Celda {
     private isRevealed: boolean;
 
     constructor(isBoomb: boolean) {
-        if(isBoomb) {
+        if (isBoomb) {
             this.isBoomb = true;
         } else {
             this.isBoomb = false;
@@ -40,5 +40,5 @@ class Celda {
 
 
 
-    
+
 }

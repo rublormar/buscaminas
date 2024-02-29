@@ -2,7 +2,7 @@
 var Juego = /** @class */ (function () {
     function Juego(filas, columnas) {
         this.tauler = new Tablero(filas, columnas);
-        console.log("hola");
+        console.log("tablero creado correctamente!");
     }
     return Juego;
 }());

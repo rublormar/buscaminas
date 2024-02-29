@@ -1,19 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 50px;
+            /* Ancho de la celda */
+            height: 50px;
+            /* Altura de la celda */
+            font-size: 20px;
+            /* Tamaño de la fuente dentro de la celda */
+            text-align: center;
+            /* Centrar el contenido dentro de la celda */
+            padding: 10px;
+            /* Espacio alrededor del contenido dentro de la celda */
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
     <div id="juego"></div>
+    <div id="mensaje"></div>
     <script src="./dist/celda.js"></script>
     <script src="./dist/tablero.js"></script>
     <script src="./dist/juego.js"></script>
     <script>
-        const juego = new Juego(5,5);
-        
+        let columns = 5;
+        let rows = 5;
+        // Crear una instancia del juego con un tablero de 5x5
+        const juego = new Juego(columns, rows);
+
+        let table = document.createElement('table');
+
+        for (let i = 0; i < rows; i++) {
+            let row = document.createElement('tr');
+            for (let j = 0; j < columns; j++) {
+                let cell = document.createElement('td');
+                cell.id = "celda-" + i + "-" + j;
+                row.appendChild(cell);
+                // Agrega el event listener a cada celda
+                cell.addEventListener("click", function (event) {
+                    let celda = event.target;
+                    let id = celda.id.split("-");
+                    let i = id[1];
+                    let j = id[2];
+                    if (juego.tauler.casillas[parseInt(i)][parseInt(j)].isBoomb) {
+                        celda.textContent = "💣";
+                        celda.style.backgroundColor = "red";
+                        console.log("Has perdido");
+
+                    } else {
+                        let numBombas = juego.tauler.casillas[parseInt(i)][parseInt(j)].minasAlrededor;
+                        celda.textContent = numBombas;
+                        celda.style.backgroundColor = "green";
+                    }
+                });
+            }
+            table.appendChild(row);
+        }
+        document.getElementById('juego').appendChild(table);
     </script>
 </body>
+
 </html>
