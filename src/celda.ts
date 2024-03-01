@@ -2,6 +2,7 @@ class Celda {
     private isBoomb: boolean;
     private isFlag: boolean;
     private isRevealed: boolean;
+    private minasAlrededor: number;
 
     constructor(isBoomb: boolean) {
         if (isBoomb) {
@@ -11,6 +12,7 @@ class Celda {
         }
         this.isFlag = false;
         this.isRevealed = false;
+        this.minasAlrededor = 0;
     }
 
     public getIsBoomb(): boolean {
@@ -36,6 +38,14 @@ class Celda {
 
     public setIsRevealed(isRevealed: boolean): void {
         this.isRevealed = isRevealed;
+    }
+
+    public getMinasAlrededor(): number {
+        return this.minasAlrededor;
+    }
+
+    public setMinasAlrededor(minasAlrededor: number): void {
+        this.minasAlrededor = minasAlrededor;
     }
 
 

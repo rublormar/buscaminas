@@ -9,6 +9,7 @@ var Celda = /** @class */ (function () {
         }
         this.isFlag = false;
         this.isRevealed = false;
+        this.minasAlrededor = 0;
     }
     Celda.prototype.getIsBoomb = function () {
         return this.isBoomb;
@@ -27,6 +28,12 @@ var Celda = /** @class */ (function () {
     };
     Celda.prototype.setIsRevealed = function (isRevealed) {
         this.isRevealed = isRevealed;
+    };
+    Celda.prototype.getMinasAlrededor = function () {
+        return this.minasAlrededor;
+    };
+    Celda.prototype.setMinasAlrededor = function (minasAlrededor) {
+        this.minasAlrededor = minasAlrededor;
     };
     return Celda;
 }());
